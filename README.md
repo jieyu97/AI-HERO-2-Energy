@@ -6,6 +6,7 @@ This is the complete source code for the AI HERO Hackathon 2 (2023) for the Use 
 
 
 - **Zenodo link to the trained model parameters (file name: `checkpoint_d4.pt`):** (https://doi.org/10.5281/zenodo.8063970)
+- Please change the `model_directory`, `data_workspace` and `group_workspace` in `predict.sh`.
 
  
 ## Table of Contents
