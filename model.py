@@ -3,15 +3,17 @@ from torch import nn
 from torchvision.models.detection import maskrcnn_resnet50_fpn_v2
 
 
-def MaskRCNN(in_channels=5, num_classes=2, trainable_backbone_layers=5, image_mean=None, image_std=None, **kwargs):
+def MaskRCNN(in_channels=5, num_classes=91, trainable_backbone_layers=5, image_mean=None, image_std=None, **kwargs):
     if image_mean is None:
         image_mean = [0.485, 0.456, 0.406, 0.5, 0.5]
     if image_std is None:
         image_std = [0.229, 0.224, 0.225, 0.225, 0.225]
         
     model = maskrcnn_resnet50_fpn_v2(
+        weights='DEFAULT',
         num_classes=num_classes,
         trainable_backbone_layers=trainable_backbone_layers,
+        weights_backbone='DEFAULT',
         image_mean=image_mean,
         image_std=image_std
     )
