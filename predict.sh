@@ -14,15 +14,14 @@ export OMP_NUM_THREADS=76
 
 model_directory='/hkfs/work/workspace/scratch/ih5525-E1/AI_HERO_E1/checkpoint_d4.pt'
 data_workspace='/hkfs/work/workspace/scratch/ih5525-energy-train-data'
+group_workspace=/hkfs/work/workspace/scratch/ih5525-E1/AI_HERO_E1
 
-group_workspace=/hkfs/work/workspace/scratch/ih5525-E1/AI-HERO-2-Energy
-group_workspace_home=/hkfs/work/workspace/scratch/ih5525-E1
-
+group_workspace_env_home=/hkfs/work/workspace/scratch/ih5525-E1
 
 module load compiler/gnu/11
 module load mpi/openmpi/4.0
 module load lib/hdf5/1.12
 module load devel/cuda/11.8
 
-source ${group_workspace_home}/energy_env/bin/activate
+source ${group_workspace_env_home}/energy_env/bin/activate
 srun python ${group_workspace}/predict.py -m model_directory --root data_workspace
