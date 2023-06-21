@@ -40,6 +40,10 @@ def train(hyperparameters: argparse.Namespace):
     model = MaskRCNN()
     model.to(device)
 
+    # load saved weights
+    PATH = '/hkfs/work/workspace/scratch/ih5525-E1/AI-HERO-2-Energy/checkpoint_d3.pt'
+    model.load_state_dict(torch.load(PATH))
+    
     # set up optimization procedure
     optimizer = torch.optim.Adam(model.parameters(), lr=hyperparameters.lr)
     best_iou = 0.
@@ -109,20 +113,18 @@ def train(hyperparameters: argparse.Namespace):
         if test_metric.compute() > best_iou:
             best_iou = test_metric.compute()
             print('\tSaving better model\n')
-            torch.save(model.state_dict(), 'checkpoint.pt')
+            torch.save(model.state_dict(), 'checkpoint_d4.pt')
         else:
             print('\n')
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-b', '--batch', default=1, help='batch size', type=int)
-    # parser.add_argument('-e', '--epochs', default=100, help='number of training epochs', type=int)
-    parser.add_argument('-e', '--epochs', default=10, help='number of training epochs', type=int)
+    parser.add_argument('-b', '--batch', default=2, help='batch size', type=int)
+    parser.add_argument('-e', '--epochs', default=4, help='number of training epochs', type=int)
     parser.add_argument('-l', '--lr', default=1e-4, help='learning rate of the optimizer', type=float)
     parser.add_argument('-s', '--seed', default=42, help='constant random seed for reproduction', type=int)
-    # parser.add_argument('root', help='path to the data root', type=str)
-    parser.add_argument('--root', default='/hkfs/work/workspace/scratch/dz4120-energy-train-data/', help='path to the data root', type=str)
+    parser.add_argument('--root', default='/hkfs/work/workspace/scratch/ih5525-energy-train-data/', help='path to the data root', type=str)
 
     arguments = parser.parse_args()
     train(arguments)
