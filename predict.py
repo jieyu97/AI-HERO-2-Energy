@@ -65,10 +65,10 @@ def predict(hyperparameters: argparse.Namespace):
         
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-b', '--batch', default=1, help='batch size', type=int)
-    parser.add_argument('-m', '--model', default='checkpoint.pt', help='model checkpoint', type=str)
+    parser.add_argument('-b', '--batch', default=4, help='batch size', type=int)
+    parser.add_argument('-m', '--model', default='/hkfs/work/workspace/scratch/ih5525-E1/AI-HERO-2-Energy/checkpoint_d4.pt', help='model checkpoint', type=str)
     parser.add_argument('-s', '--seed', default=42, help='constant random seed for reproduction', type=int)
-    parser.add_argument('root', help='path to the data root', type=str)
+    parser.add_argument('--root', default='/hkfs/work/workspace/scratch/ih5525-energy-train-data/', help='path to the data root', type=str)
 
     arguments = parser.parse_args()
     predict(arguments)
