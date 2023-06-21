@@ -4,6 +4,10 @@ This is the complete source code for the AI HERO Hackathon 2 (2023) for the Use 
 
 [![](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/) [![License](https://img.shields.io/badge/License-BSD_2--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)
 
+
+- **Zenodo link to the trained model parameters (file name: `checkpoint_d4.pt`):** (https://doi.org/10.5281/zenodo.8063970)
+
+ 
 ## Table of Contents
 
 <!--ts-->
